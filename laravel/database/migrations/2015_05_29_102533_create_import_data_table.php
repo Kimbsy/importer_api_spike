@@ -17,7 +17,7 @@ class CreateImportDataTable extends Migration {
 			$table->increments('id');
 			$table->integer('import_id');
 			$table->longText('data');
-		}
+		});
 	}
 
 	/**
