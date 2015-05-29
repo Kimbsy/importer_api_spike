@@ -14,6 +14,7 @@
   {!! Form::close() !!}
 </div>
 <div class="container">
+<a class="btn" href="/validate">Validate this shit</a>
   <table>
     <thead>
       <tr>

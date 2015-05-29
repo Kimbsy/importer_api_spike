@@ -19,6 +19,8 @@ Route::post('home', 'HomeController@submit');
 
 Route::get('entries/{id}', 'HomeController@entries');
 
+Route::get('validate' ,'HomeController@validateServer');
+
 Route::get('upload/{id}', 'HomeController@upload');
 
 Route::controllers([
