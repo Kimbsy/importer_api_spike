@@ -29,4 +29,9 @@ class ImportData extends Model {
     $this->data = serialize($this->data);
   }
 
+  public function createFromCSV($file, $importID)
+  {
+    print_r($file);
+  }
+
 }

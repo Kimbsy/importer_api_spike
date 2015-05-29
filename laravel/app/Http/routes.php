@@ -12,8 +12,11 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::post('/', 'WelcomeController@submit');
 
 Route::get('home', 'HomeController@index');
+Route::post('home', 'HomeController@submit');
+
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

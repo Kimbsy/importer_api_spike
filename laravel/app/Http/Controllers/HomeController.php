@@ -1,5 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use Input;
+use App\Import;
+use App\ImportData;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,6 +34,24 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
+		return view('home');
+	}
+
+	public function submit()
+	{
+		Input::file('fileupload')->move('/home/superdude/Projects/importer_api_spike/laravel/storage/files/', 'import.csv');
+
+		$import = new Import();
+		$import->name = 'import_file.csv';
+		$import->save();
+
+		$fileHandle = fopen('/home/superdude/Projects/importer_api_spike/laravel/storage/files/import.csv', 'r');
+
+		$file = fgetcsv($fileHandle);
+
+		$importData = new ImportData();
+		$importData->createFromCSV($file, $import->id);
+
 		return view('home');
 	}
 

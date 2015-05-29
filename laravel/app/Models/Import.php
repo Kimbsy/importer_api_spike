@@ -17,5 +17,5 @@ class Import extends Model {
    * @var array
    */
   protected $fillable = ['name'];
-  
+
 }
