@@ -11,12 +11,15 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
-Route::post('/', 'WelcomeController@submit');
+Route::get('/', 'HomeController@index');
+Route::post('/', 'HomeController@submit');
 
 Route::get('home', 'HomeController@index');
 Route::post('home', 'HomeController@submit');
 
+Route::get('entries/{id}', 'HomeController@entries');
+
+Route::get('upload/{id}', 'HomeController@upload');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

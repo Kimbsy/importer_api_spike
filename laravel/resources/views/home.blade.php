@@ -13,4 +13,26 @@
 		
   {!! Form::close() !!}
 </div>
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <td>
+          Name
+        </td>
+        <td>
+          Records
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($imports as $import)
+        <tr>
+          <td>{{ $import->name }}</td>
+          <td><a class="btn" href="/entries/{{ $import->id }}">Entries</a></td>
+        </tr>
+      @endforeach
+    </tbody>
+  </table>
+</div>
 @endsection

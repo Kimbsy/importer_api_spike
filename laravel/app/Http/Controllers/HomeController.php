@@ -3,7 +3,7 @@
 use Input;
 use App\Import;
 use App\ImportData;
-
+use View;
 class HomeController extends Controller {
 
 	/*
@@ -34,7 +34,10 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+
+		$imports = Import::all();
+
+		return view('home', array('imports' => $imports));
 	}
 
 	public function submit()
@@ -47,12 +50,21 @@ class HomeController extends Controller {
 
 		$fileHandle = fopen('/home/superdude/Projects/importer_api_spike/laravel/storage/files/import.csv', 'r');
 
-		$file = fgetcsv($fileHandle);
+		$import->createFromCSV($fileHandle);
 
-		$importData = new ImportData();
-		$importData->createFromCSV($file, $import->id);
+		return $this->index();
+	}
 
-		return view('home');
+	public function entries($id)
+	{
+		$entries = ImportData::where('import_id', $id)->get();
+
+		return view('entries', array('entries' => $entries));
+	}
+
+	public function upload($id)
+	{
+		
 	}
 
 }
